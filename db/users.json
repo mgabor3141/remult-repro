@@ -1,0 +1,22 @@
+[
+  {
+    "id": "q7ku25wvxn6va27vvp6owy1f",
+    "name": "Jane",
+    "password": "$2a$10$.OOnsiy821oCLOSr..QEOeFP.QgUwOR/KNscWRHwhtf19yBdq7M3.",
+    "admin": true,
+    "createdAt": "2025-01-30T20:18:47.748Z",
+    "providerType": "credentials",
+    "provider": "",
+    "providerAccountId": ""
+  },
+  {
+    "id": "d3wdol7w99w79jjjaohy0tq9",
+    "name": "Steve",
+    "password": "$2a$10$BJTtmyu/TIhvsbnAeVTA2Ou7k9rKq9VYOa58wdIedXZkkgFF4.zUi",
+    "admin": false,
+    "createdAt": "2025-01-30T20:18:47.914Z",
+    "providerType": "credentials",
+    "provider": "",
+    "providerAccountId": ""
+  }
+]
