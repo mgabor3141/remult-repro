@@ -6,6 +6,7 @@ import { repo, withRemult, type UserInfo } from "remult";
 import bcrypt from "bcryptjs";
 import { User } from "../demo/auth/User";
 import { Roles } from "../demo/auth/Roles";
+import { api } from "./api";
 
 // Configuration for Auth.js
 const authConfig: NextAuthConfig = {
@@ -78,7 +79,19 @@ const authConfig: NextAuthConfig = {
   },
 };
 // Auth.js middleware for Next.js
-export const { handlers, signIn, signOut, auth } = NextAuth(authConfig);
+const { handlers: originalHandlers, signIn, signOut, auth } = NextAuth(authConfig);
+
+const handlers = {
+  GET: async (
+    ...args: Parameters<typeof originalHandlers.GET>
+  ): Promise<Response> => api.withRemult(() => originalHandlers.GET(...args)),
+  POST: async (
+    ...args: Parameters<typeof originalHandlers.POST>
+  ): Promise<Response> => api.withRemult(() => originalHandlers.POST(...args)),
+}
+
+export { handlers, signIn, signOut, auth }
+
 export type { ProviderType }; // Export ProviderType for use in `User.providerType`
 export async function getUserFromRequest(): Promise<UserInfo | undefined> {
   const session = await auth(); // Get the session from the request

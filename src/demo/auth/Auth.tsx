@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { remult } from "remult";
 import Tile, { type TileStatus } from "../Tile";
@@ -21,7 +23,7 @@ export default function Auth() {
               .
               <br />
               Please check the server terminal console for more information.
-            </>,
+            </>
           );
         }
       });
