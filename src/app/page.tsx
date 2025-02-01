@@ -1,4 +1,3 @@
-"use client"
 import Tile from "../demo/Tile";
 import Auth from "../demo/auth/Auth";
 import Admin from "../demo/Admin";
@@ -6,15 +5,20 @@ import Todo from "../demo/todo/Todo";
 import { User } from "@/demo/auth/User";
 import { remult } from "remult";
 import { auth, signIn } from "@/server/auth";
+import { useEffect } from "react";
 
 export default async function Home() {
-  const c = await remult.repo(User).count()
+  useEffect(() => {
+    (async () => {
+      const c = await remult.repo(User).count();
 
-  const session = await auth()
-  if (!session) {
-    await signIn()
-    return
-  }
+      const session = await auth();
+      if (!session) {
+        await signIn();
+        return;
+      }
+    })();
+  }, []);
 
   return (
     <div className="tiles">
